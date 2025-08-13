@@ -3,6 +3,27 @@ let prompt = require("prompt-sync")();
 let Clientes = [];
 let Livros = [];
 
+let senhaCorreta = "Senai1234";
+let tentativasSenha = 0;
+
+while (tentativasSenha < 3) {
+  let senhaDigitada = prompt("Digite a senha para acessar o sistema:");
+  if (senhaDigitada === senhaCorreta) {
+    console.log("Senha Correta! Acesso concedido.");
+    break;
+  } else {
+    tentativasSenha++;
+    console.log(
+      "Senha Incorreta. tentativas restantes" + (3 - tentativasSenha)
+    );
+  }
+}
+
+if (tentativasSenha === 3) {
+  console.log("Acesso não Autorizado. Você excedeu o número de tentativas");
+  Process.exit();
+}
+
 let opcao;
 
 do {
